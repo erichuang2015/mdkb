@@ -1,0 +1,61 @@
+<?php
+
+    namespace MDKB;
+    
+    class Category {
+        
+        protected $path     = "";
+        protected $route    = "";
+        protected $folder   = "";
+        protected $name     = "";
+        protected $pages    = array();
+        
+        public function __construct($folder) {
+            
+            $this->route = strtolower($folder);
+            
+            $this->path = Knowledgebase::CONTENT_FOLDER."/".$folder;
+            
+            // Determine the category name based on the folder
+            if(file_exists($this->path."/actual_name")) {
+                // actual_name file exists - use this as the name
+                $this->name = file_get_contents($this->path."/actual_name");
+            }
+            else {
+                // Replace dashes with spaces and uppercase first letter of each word
+                $this->name = ucwords(str_replace("-", " ", $folder));
+            }
+         
+            // Find all category pages
+            $pages = scandir($this->path);
+            foreach($pages as $page) {
+                if(substr($page, -2) == ".md" && is_file($this->path."/".$page)) {
+                    $this->pages[] = new Page($page, $folder);
+                }
+            }
+            
+        }
+        
+        public function getPage($route) {
+            
+            foreach($this->pages as $page) {
+                if($page->route == $route) {
+                    return $page;
+                }
+            }
+            
+            return false;
+        }
+        
+        
+        public function __get($name) {
+            return $this->{$name};
+        }
+        
+        public static function compare($a, $b) {
+            return strcmp($a->name, $b->name);
+        }
+        
+    }
+
+?>
