@@ -1,6 +1,6 @@
 <?php
     
-    namespace MDKB;
+    namespace leorojas22\MDKB;
     
     class Page {
         
@@ -18,15 +18,15 @@
             
             $this->path = Knowledgebase::CONTENT_FOLDER."/".$folder."/".$file;
             
-            $this->route = strtolower(substr($file, strlen($file)-3));
-            
+            $this->route = trim(strtolower(substr($file, 0, (strlen($file)-3))));
             // Determine meta data
             $content = explode("\n", file_get_contents($this->path));
+
             $foundMetaData = false;
-            foreach($metaDataNames as $metaDataName) {
+            foreach($this->metaDataNames as $metaDataName) {
                 // Look for meta data within first 3 lines
                 for($i=0;$i<=2;$i++) {
-                    if(isset($content[$i]) && substr($content[$i], strlen($content[$i])).":" == $metaDataName.":") {
+                    if(isset($content[$i]) && substr($content[$i], 0, strlen($metaDataName)).":" == $metaDataName.":") {
                         switch($metaDataName) {
                             case "Title":
                                 $this->title = $content[$i];

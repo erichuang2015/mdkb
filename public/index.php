@@ -13,6 +13,8 @@ $app->get("/hello/{name}", function(Request $request, Response $response) {
     return $response;
 });
 
+$app->get("/{category}/{page}", "leorojas22\MDKB\KnowledgebaseController:page");
+
 $app->run();
 
 ?>

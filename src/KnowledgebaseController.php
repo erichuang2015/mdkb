@@ -1,27 +1,41 @@
 <?php
     
-    namespace MDKB;
+    namespace leorojas22\MDKB;
  
     class KnowledgebaseController {
         
-        public function page($category, $page) {
+        protected $kb;
+        
+        public function __construct() {
             
-            // Try to find file
+            $this->kb = new Knowledgebase();
+            $this->kb->loadCategories();
+        }
+        
+        public function page($request, $response, $args) {
+
+            $categoryRoute  = $args['category'];
+            $pageRoute      = $args['page'];
+
+            $data       = [];
             
-            $file = "../content/".$category."/".$page;
-            if(file_exists($file)) {
-                
-                $parsedown = new Parsedown();
-                
-                $fileContents = file_get_contents($file);
-                
-                return $parsedown->text($fileContents);
+            $category   = $this->kb->getCategory($categoryRoute);
+            $page       = false;
+            
+            if($category) {
+                $page = $category->getPage($pageRoute);
+                if($page) {
+                    $data['page'] = $page;
+
+                    $parsedown = new \Parsedown();
+                    echo $parsedown->text($page->content);
+                    
+                    return;
+                }
                 
             }
-            else {
-                return false;
-            }
             
+            echo "page not found";
         }
         
     }

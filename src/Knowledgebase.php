@@ -1,6 +1,6 @@
 <?php
     
-    namespace MDKB;
+    namespace leorojas22\MDKB;
     
     
     class Knowledgebase {
@@ -10,7 +10,7 @@
         protected $categories = array();
         
         /**
-         * Gets all categories in the knowledgebase
+         * Loads all categories and pages in the knowledgebase
          * 
          * - Searches the content folder for all folders which will become categories
          */

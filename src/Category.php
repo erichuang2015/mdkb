@@ -1,6 +1,6 @@
 <?php
 
-    namespace MDKB;
+    namespace leorojas22\MDKB;
     
     class Category {
         
@@ -28,8 +28,9 @@
          
             // Find all category pages
             $pages = scandir($this->path);
+
             foreach($pages as $page) {
-                if(substr($page, -2) == ".md" && is_file($this->path."/".$page)) {
+                if(substr($page, -3) == ".md" && is_file($this->path."/".$page)) {
                     $this->pages[] = new Page($page, $folder);
                 }
             }
