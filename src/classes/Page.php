@@ -1,6 +1,6 @@
 <?php
     
-    namespace leorojas22\MDKB;
+    namespace leorojas22\MDKB\Classes;
     
     class Page {
         
