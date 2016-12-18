@@ -1,0 +1,21 @@
+.navbar {
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+
+.navbar .navbar-brand {
+    height: 70px;
+    font-size: 2em;
+    padding-top: 25px;
+}
+
+.panel .panel-heading {
+    margin-top: 0px;
+}
+
+.panel .list-group .list-group-item {
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -1,6 +1,6 @@
 <?php
 
-    namespace leorojas22\MDKB\Controllers;
+    namespace MDKB\Controllers;
     
     use Interop\Container\ContainerInterface;
     use \Psr\Http\Message\ResponseInterface as Response;
