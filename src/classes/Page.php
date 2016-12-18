@@ -12,7 +12,6 @@
         protected $content      = "";
         protected $sort         = 0;
         protected $lastModified = 0;
-        protected $hasMetaData  = false;
         
         public function __construct($file, $folder) {
             
@@ -20,9 +19,9 @@
             $this->lastModified = date(DATE_FORMAT, filemtime($this->path));
             $this->route        = trim(strtolower(substr($file, 0, (strlen($file)-3))));
             
-            // Determine meta data
             $content = explode("\n", file_get_contents($this->path));
 
+            // Determine if there is meta data
             $foundMetaData = false;
             foreach($this->metaDataNames as $metaDataName) {
                 // Look for meta data within first 3 lines
@@ -37,7 +36,7 @@
                                 $this->sort = is_numeric($metaDataValue) ? $metaDataValue : 0;
                                 break;
                         }
-                        $this->hasMetaData = true;
+                        $foundMetaData = true;
                     }
                 }
             }
@@ -45,7 +44,7 @@
             // Put content back to single string
             $content = implode("\n", $content);
                 
-            if($this->hasMetaData) {
+            if($foundMetaData) {
                 // Split content by --- to get actual content
                 $content = explode("---", $content);
                 if(count($content) > 0) {

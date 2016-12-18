@@ -96,6 +96,12 @@ body {
     color: #888;
 }
 
+.page .menu .list-group .list-group-item a:hover {
+    color: #444;
+    text-decoration: none;
+}
+
+
 .page .menu .list-group .list-group-item.selected a {
     color: #444;
 }

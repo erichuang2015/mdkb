@@ -12,7 +12,6 @@
             parent::__construct($ci);
             
             $this->kb = new Knowledgebase();
-            $this->kb->loadCategories();
             
             $this->data['categories'] = $this->kb->categories;
         }

@@ -7,35 +7,36 @@
         
         protected $categories = array();
         
-        /**
-         * Loads all categories and pages in the knowledgebase
-         * 
-         * - Searches the content folder for all folders which will become categories
-         */
-        public function loadCategories() {
+        
+        public function __construct() {
             
             $folders = scandir(CONTENT_FOLDER);
             
             if($folders) {
+                // Search through all the folders in the content folder
                 foreach($folders as $folder) {
                     if($folder == "." || $folder == "..") {
                         continue;
                     }
                     
                     if(is_dir(CONTENT_FOLDER."/".$folder)) {
+                        // Create category for each folder found
                         $this->categories[] = new Category($folder);
                     }
                 }
             }
             
-            // Sort pages
+            // Sort categories
             usort($this->categories, array("MDKB\Classes\Category", "compare"));
         }
         
-        public function __get($name) {
-            return $this->{$name};
-        }
         
+        /**
+         * Gets a category based on the given route.
+         * 
+         * @param type $route
+         * @return mixed - When a category is found, it returns the category.  Otherwise returns false.
+         */
         public function getCategory($route) {
             foreach($this->categories as $category) {
                 if($category->route == $route) {
@@ -46,6 +47,13 @@
             return false;
         }
         
+        
+        /**
+         * Searches all pages in the knowledge base for the $searchTerm provided
+         * 
+         * @param type $searchTerm
+         * @return array - An array of SearchResult objects which contains the matched Category and Page
+         */
         public function search($searchTerm) {
             
             $matches    = array();
@@ -67,6 +75,10 @@
             }
             
             return $matches;
+        }
+        
+        public function __get($name) {
+            return $this->{$name};
         }
     }
 

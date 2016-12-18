@@ -11,6 +11,7 @@
         protected $sort     = 0;
         protected $pages    = array();
         
+        
         public function __construct($folder) {
             
             $this->route = strtolower($folder);
