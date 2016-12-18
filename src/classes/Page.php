@@ -16,7 +16,7 @@
         
         public function __construct($file, $folder) {
             
-            $this->path         = Knowledgebase::CONTENT_FOLDER."/".$folder."/".$file;
+            $this->path         = CONTENT_FOLDER."/".$folder."/".$file;
             $this->lastModified = date(DATE_FORMAT, filemtime($this->path));
             $this->route        = trim(strtolower(substr($file, 0, (strlen($file)-3))));
             

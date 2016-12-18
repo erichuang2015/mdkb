@@ -20,8 +20,8 @@
                     </div>
                     <?if(isset($pageTitle)):?>
                     <div class="col-md-6">
-                        <form class="search-form form-inline text-right">
-                            <input type="text" class="form-control" size="40" placeholder="Search">
+                        <form action="/search" action="get" class="search-form form-inline text-right">
+                            <input type="text" name="term" class="form-control" size="40" placeholder="Search">
                         </form>
                     </div>    
                     <?endif?>

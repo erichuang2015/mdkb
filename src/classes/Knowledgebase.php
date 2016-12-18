@@ -5,8 +5,6 @@
     
     class Knowledgebase {
         
-        const CONTENT_FOLDER = "../content";
-        
         protected $categories = array();
         
         /**
@@ -16,7 +14,7 @@
          */
         public function loadCategories() {
             
-            $folders = scandir(self::CONTENT_FOLDER);
+            $folders = scandir(CONTENT_FOLDER);
             
             if($folders) {
                 foreach($folders as $folder) {
@@ -24,7 +22,7 @@
                         continue;
                     }
                     
-                    if(is_dir(self::CONTENT_FOLDER."/".$folder)) {
+                    if(is_dir(CONTENT_FOLDER."/".$folder)) {
                         $this->categories[] = new Category($folder);
                     }
                 }
@@ -56,12 +54,12 @@
             if(strlen($searchTerm) > 0) {
                 foreach($this->categories as $category) {
                     foreach($category->pages as $page) {
-                        // Check match percentage
+                        // Check for matches
                         $matchedTitle   = substr_count(strtolower(strip_tags($page->content)), $searchTerm);
                         $matchedText    = substr_count(strtolower(strip_tags($page->content)), $searchTerm);
                         
                         if($matchedText > 0 || $matchedTitle > 0) {
-                            // Save as match if greater than 50%
+                            // Match found! Store in results array
                             $matches[] = new SearchResult($category, $page);
                         }
                     }

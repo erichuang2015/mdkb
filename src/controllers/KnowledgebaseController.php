@@ -47,6 +47,7 @@
                 
             }
             
+            $this->data['pageTitle'] = "Page Not Found";
             return $this->view($response, "notfound.php");
         }
         

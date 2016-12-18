@@ -1,9 +1,9 @@
 <?php include("_header.php"); ?>
         
         <div class="jumbotron">
-            <form class="form-inline text-center">
+            <form action="/search" method="get" class="form-inline text-center">
                 <div class="form-group">
-                    <input type="text" class="form-control input-lg" size="50" placeholder="Search the knowledge base">
+                    <input type="text" name="term" class="form-control input-lg" size="50" placeholder="Search the knowledge base">
                     <button type="submit" class="btn btn-primary btn-lg">Search</button>
                 </div>
             </form>

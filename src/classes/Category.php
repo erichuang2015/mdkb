@@ -15,7 +15,7 @@
             
             $this->route = strtolower($folder);
             
-            $this->path = Knowledgebase::CONTENT_FOLDER."/".$folder;
+            $this->path = CONTENT_FOLDER."/".$folder;
             
             // Determine the category name based on the folder
             if(file_exists($this->path."/actual_name")) {
