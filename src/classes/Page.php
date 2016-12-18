@@ -41,6 +41,11 @@
                 }
             }
             
+            if($this->title == "") {
+                // No meta data for title - Use name of file
+                $this->title = ucwords(str_replace("-", " ", $this->route));
+            }
+            
             // Put content back to single string
             $content = implode("\n", $content);
                 

@@ -1,4 +1,4 @@
-<div class="col-md-3 menu">
+<div class="col-md-3 menu hidden-sm hidden-xs">
     <?if(count($categories) > 0):?>
         <?foreach($categories as $category):?>
         <div class="list-group">

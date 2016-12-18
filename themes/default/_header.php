@@ -15,11 +15,11 @@
         <div class="header">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         <h1><a href="/"><?=$siteTitle?></a></h1>
                     </div>
                     <?if(isset($pageTitle)):?>
-                    <div class="col-md-6">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         <form action="/search" action="get" class="search-form form-inline text-right">
                             <input type="text" name="term" class="form-control" size="40" placeholder="Search">
                         </form>

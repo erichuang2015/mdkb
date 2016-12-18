@@ -29,6 +29,10 @@ body {
     padding-top: 18px;
 }
 
+.jumbotron .search-form .input-lg {
+    margin-bottom: 15px;
+}
+
 .panel .panel-heading {
     margin-top: 0px;
 }
@@ -116,4 +120,15 @@ body {
 
 .search-result .highlight {
     background-color: #fff400;
+}
+
+.affix {
+    top: 0px;
+    margin-right: 29px;
+}
+
+@media(max-width: 768px) {
+    .affix {
+        position: relative !important;
+    }
 }

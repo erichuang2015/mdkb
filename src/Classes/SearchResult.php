@@ -15,6 +15,7 @@
         public function __get($name) {
             
             if($name == "text") {
+                // Format the search result text - Limit to 400 characters and add ellipsis if text is shortened
                 $stripedContent = strip_tags($this->page->content);
                 $text = substr($stripedContent, 0, 400);
                 if(strlen($stripedContent) > strlen($text)) {
