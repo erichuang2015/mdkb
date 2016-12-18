@@ -19,3 +19,53 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.footer {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    padding: 20px;
+}
+
+.page {
+    margin-top: 20px;
+}
+
+.page .panel {
+    border: solid lightgrey 1px;
+    margin-top: 20px;
+    border-radius: 0px;
+    box-shadow: 0px 0px 25px 0px rgba(0,0,0,.12);
+    width: 95%;
+    padding: 20px;
+}
+
+.page .menu .list-group {
+    padding: 0px 15px;
+    padding-top: 20px;
+    margin-bottom: 5px;
+}
+
+.page .menu .list-group h5 {
+    margin-top: 0px;
+    text-transform: uppercase;
+}
+
+.page .menu .list-group .list-group-item {
+    padding-left: 0px;
+    padding-right: 0px;
+    border: 0px;
+}
+
+.page .menu .list-group .list-group-item.selected {
+    font-weight: bold;
+}
+
+.page .menu .list-group .list-group-item a {
+    color: #888;
+}
+
+.page .menu .list-group .list-group-item.selected a {
+    color: #444;
+}

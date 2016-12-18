@@ -1,17 +1,4 @@
-<html>
-    <head>
-        <title><?=(isset($pageTitle)) ? $pageTitle : "Knowledge Base"?></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-    </head>
-    <body>
-        
-        <nav class="navbar navbar-inverse">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">MDKB</a>
-            </div>
-        </nav>
+<?php include("_header.php"); ?>
         
         <div class="jumbotron">
             <form class="form-inline text-center">
@@ -42,16 +29,11 @@
                 <?endif?>
             </div>
         </div>
-        
-        
-        <script type="text/javascript" src="/assets/vendor/jquery/jquery-2.2.4.min.js"></script>
-        <script type="text/javascript" src="/assets/vendor/masonry/masonry.pkgd.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('.categories').masonry({
-                    itemSelector: '.category'
-                });
-            });
-        </script>
-    </body>
-</html>
+
+<?php 
+    $jsFiles = array(
+        "/assets/vendor/masonry/masonry.pkgd.min.js",
+        "/assets/js/home.js"
+    );
+    include("_footer.php"); 
+?>

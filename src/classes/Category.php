@@ -1,6 +1,6 @@
 <?php
 
-    namespace leorojas22\MDKB\Classes;
+    namespace MDKB\Classes;
     
     class Category {
         
@@ -8,6 +8,7 @@
         protected $route    = "";
         protected $folder   = "";
         protected $name     = "";
+        protected $sort     = 0;
         protected $pages    = array();
         
         public function __construct($folder) {
@@ -25,6 +26,13 @@
                 // Replace dashes with spaces and uppercase first letter of each word
                 $this->name = ucwords(str_replace("-", " ", $folder));
             }
+            
+            // Determine sort order
+            if(file_exists($this->path."/sort")) {
+                // sort file exists - use this as sort order
+                $sort = file_get_contents($this->path."/sort");
+                $this->sort = (is_numeric($sort)) ? $sort : 0;
+            }
          
             // Find all category pages
             $pages = scandir($this->path);
@@ -35,6 +43,8 @@
                 }
             }
             
+            // Sort pages
+            usort($this->pages, array("MDKB\Classes\Page", "compare"));
         }
         
         public function getPage($route) {

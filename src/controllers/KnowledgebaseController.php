@@ -1,22 +1,20 @@
 <?php
     
-    namespace leorojas22\MDKB\Controllers;
+    namespace MDKB\Controllers;
  
     use Interop\Container\ContainerInterface;
-    use leorojas22\MDKB\Classes\Knowledgebase;
+    use MDKB\Classes\Knowledgebase;
     
     class KnowledgebaseController extends Controller {
-        
         protected $kb;
-        protected $data;
-        
+
         public function __construct(ContainerInterface $ci) {
             parent::__construct($ci);
             
             $this->kb = new Knowledgebase();
             $this->kb->loadCategories();
             
-            $this->data = ["categories" => $this->kb->categories];
+            $this->data['categories'] = $this->kb->categories;
         }
         
         public function home($request, $response, $args) {
@@ -39,10 +37,10 @@
                 
                 if($page) {
                     
-                    $parsedown = new \Parsedown();
-                    $this->data['title']      = $page->title;
-                    $this->data['content']    = $parsedown->text($page->content);       
-                    
+                    $this->data['pageTitle']    = $page->title;
+                    $this->data['content']      = $page->content;       
+                    $this->data['lastModified'] = $page->lastModified;
+                    $this->data['fullRoute']    = $category->route."/".$page->route;
                     return $this->view($response, "page.php");
                     
                 }
@@ -50,6 +48,10 @@
             }
             
             return $this->view($response, "notfound.php");
+        }
+        
+        public function search($request, $response, $args) {
+            
         }
         
     }

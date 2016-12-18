@@ -1,6 +1,6 @@
 <?php
     
-    namespace leorojas22\MDKB\Classes;
+    namespace MDKB\Classes;
     
     
     class Knowledgebase {
@@ -30,6 +30,8 @@
                 }
             }
             
+            // Sort pages
+            usort($this->categories, array("MDKB\Classes\Category", "compare"));
         }
         
         public function __get($name) {

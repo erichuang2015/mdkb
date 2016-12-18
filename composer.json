@@ -5,6 +5,10 @@
         "erusev/parsedown": "^1.6"
     },
     "autoload": {
-        "psr-4": { "leorojas22\\MDKB\\": "src/" }
+        "psr-4": { "MDKB\\": "src/" },
+        "files": [
+            "src/functions.php",
+            "src/config.php"
+        ]
     }
 }

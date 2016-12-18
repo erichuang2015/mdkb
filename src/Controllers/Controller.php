@@ -12,7 +12,7 @@
         
         public function __construct(ContainerInterface $ci) {
             $this->ci = $ci;
-            $this->data = [];
+            $this->data = ["siteTitle" => $ci->get("siteTitle")];
         }
         
         public function view(Response $response, $view, $data = false) {
