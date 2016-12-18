@@ -29,10 +29,6 @@ body {
     padding-top: 18px;
 }
 
-.jumbotron .search-form .input-lg {
-    margin-bottom: 15px;
-}
-
 .panel .panel-heading {
     margin-top: 0px;
 }
@@ -127,8 +123,12 @@ body {
     margin-right: 29px;
 }
 
-@media(max-width: 768px) {
+@media(max-width: 767px) {
     .affix {
         position: relative !important;
+    }
+    
+    .jumbotron .search-form .input-lg {
+        margin-bottom: 15px;
     }
 }

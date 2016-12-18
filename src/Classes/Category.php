@@ -65,7 +65,7 @@
         }
         
         public static function compare($a, $b) {
-            return strcmp($a->name, $b->name);
+            return strcmp($a->sort, $b->sort);
         }
         
     }
