@@ -52,6 +52,12 @@
         
         public function search($request, $response, $args) {
             
+            $searchTerm = (isset($_GET['term'])) ? $_GET['term'] : "";
+            $this->data['pageTitle']        = "Search";
+            $this->data['searchTerm']       = htmlentities($searchTerm);
+            $this->data['searchResults']    = $this->kb->search($searchTerm);
+            
+            return $this->view($response, "search.php");
         }
         
     }

@@ -1,16 +1,40 @@
-.navbar {
-    border-radius: 0px;
-    margin-bottom: 0px;
+body {
+    font-size: 13px;
+}
+.header {
+    background-color: #222;
+    height: 70px;
 }
 
-.navbar .navbar-brand {
-    height: 70px;
+.header .container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+    width: 98%;
+}
+
+.header h1 {
     font-size: 2em;
-    padding-top: 25px;
+}
+
+.header h1 a {
+    color: #9d9d9d;
+}
+
+.header h1 a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.header .search-form {
+    padding-top: 18px;
 }
 
 .panel .panel-heading {
     margin-top: 0px;
+}
+
+.categories .category .panel .panel-heading {
+    margin-bottom: 0px;
 }
 
 .panel .list-group .list-group-item {
@@ -30,6 +54,9 @@
 
 .page {
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 98%;
 }
 
 .page .panel {
@@ -37,12 +64,15 @@
     margin-top: 20px;
     border-radius: 0px;
     box-shadow: 0px 0px 25px 0px rgba(0,0,0,.12);
-    width: 95%;
     padding: 20px;
 }
 
+.page .panel .panel-heading h2 {
+    margin-top: 0px;
+}
+
 .page .menu .list-group {
-    padding: 0px 15px;
+    padding: 0px;
     padding-top: 20px;
     margin-bottom: 5px;
 }
@@ -68,4 +98,16 @@
 
 .page .menu .list-group .list-group-item.selected a {
     color: #444;
+}
+
+.search-result {
+    padding-bottom: 20px;
+}
+
+.search-result h3 {
+    margin-top: 0px;
+}
+
+.search-result .highlight {
+    background-color: #fff400;
 }

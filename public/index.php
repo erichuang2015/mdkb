@@ -51,6 +51,7 @@ $app->get("/assets[/{params:.*}]", function($request, $response, $args) {
 
 // Routes
 $app->get("/", "MDKB\Controllers\KnowledgebaseController:home");
+$app->get("/search", "MDKB\Controllers\KnowledgebaseController:search");
 $app->get("/{category}/{page}", "MDKB\Controllers\KnowledgebaseController:page");
 
 $app->run();

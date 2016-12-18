@@ -47,6 +47,29 @@
             
             return false;
         }
+        
+        public function search($searchTerm) {
+            
+            $matches    = array();
+            $searchTerm = trim(strtolower($searchTerm));
+            
+            if(strlen($searchTerm) > 0) {
+                foreach($this->categories as $category) {
+                    foreach($category->pages as $page) {
+                        // Check match percentage
+                        $matchedTitle   = substr_count(strtolower(strip_tags($page->content)), $searchTerm);
+                        $matchedText    = substr_count(strtolower(strip_tags($page->content)), $searchTerm);
+                        
+                        if($matchedText > 0 || $matchedTitle > 0) {
+                            // Save as match if greater than 50%
+                            $matches[] = new SearchResult($category, $page);
+                        }
+                    }
+                }
+            }
+            
+            return $matches;
+        }
     }
 
 

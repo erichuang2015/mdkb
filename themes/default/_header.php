@@ -12,8 +12,19 @@
     </head>
     <body>
         
-        <nav class="navbar navbar-inverse">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/"><?=$siteTitle?></a>
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1><a href="/"><?=$siteTitle?></a></h1>
+                    </div>
+                    <?if(isset($pageTitle)):?>
+                    <div class="col-md-6">
+                        <form class="search-form form-inline text-right">
+                            <input type="text" class="form-control" size="40" placeholder="Search">
+                        </form>
+                    </div>    
+                    <?endif?>
+                </div>
             </div>
-        </nav>
+        </div>
