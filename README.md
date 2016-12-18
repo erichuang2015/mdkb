@@ -26,3 +26,7 @@ Download the repo then install with composer
  ---
  This is the page content
  ```
+
+## Routes
+
+Routes are determined by the category/page name combo.  For example if you have a folder named "category-1" and inside that folder is a file named "page-one.md", the route to the knowledge base page would be http://yoursite.com/category-1/page-one
