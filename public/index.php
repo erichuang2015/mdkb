@@ -1,8 +1,5 @@
 <?php
     
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
-
 require("../vendor/autoload.php");
 
 /*
@@ -17,8 +14,12 @@ $app = new \Slim\App($c);
 */
 
 // Initialize Slim Framework
-$app = new \Slim\App;
-$container = $app->getContainer();
+$app = new \Slim\Slim(array(
+    "templates.path" => "../themes/".THEME_NAME
+));
+
+
+/*$container = $app->getContainer();
 
 $container['themeName'] = THEME_NAME;
 $container['siteTitle'] = SITE_NAME;
@@ -27,7 +28,7 @@ $container['siteTitle'] = SITE_NAME;
 $container['view'] = function($container) {
     return new \Slim\Views\PhpRenderer("../themes/".$container['themeName']."/");
 };
-
+*/
 
 
 // Load assets from theme folders
@@ -52,7 +53,7 @@ $app->get("/assets[/{params:.*}]", function($request, $response, $args) {
 // Routes
 $app->get("/", "MDKB\Controllers\KnowledgebaseController:home");
 $app->get("/search", "MDKB\Controllers\KnowledgebaseController:search");
-$app->get("/{category}/{page}", "MDKB\Controllers\KnowledgebaseController:page");
+$app->get("/:category/:page", "MDKB\Controllers\KnowledgebaseController:page");
 
 $app->run();
 

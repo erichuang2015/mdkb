@@ -2,28 +2,24 @@
 
     namespace MDKB\Controllers;
     
-    use Interop\Container\ContainerInterface;
-    use \Psr\Http\Message\ResponseInterface as Response;
-    
     abstract class Controller {
         
-        protected $ci;
+        protected $app;
         protected $data;
         
-        public function __construct(ContainerInterface $ci) {
-            $this->ci = $ci;
-            $this->data = ["siteTitle" => $ci->get("siteTitle")];
+        public function __construct() {
+            $this->data = ["siteTitle" => ""];
+            $this->app = \Slim\Slim::getInstance();
         }
         
-        public function view(Response $response, $view, $data = false) {
+        public function view($view, $data = false) {
             
             if($data) {
                 $this->data = $data;
             }
             
-            return $this->ci->get("view")->render($response, $view, $this->data);
+            return $this->app->render($view, $this->data);
         }
-        
         
     }
 

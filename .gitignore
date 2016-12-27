@@ -1,4 +1,5 @@
-content/*
 nbproject/*
 vendor/*
 composer.lock
+goanswer/*
+themes/goanswer/*
